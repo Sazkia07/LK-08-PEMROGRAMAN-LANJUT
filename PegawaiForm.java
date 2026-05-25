@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 
 public class PegawaiForm extends JFrame {
@@ -36,7 +37,7 @@ public class PegawaiForm extends JFrame {
     }
 
     void simpan(){
-        if(nip.getText().isEmpty() || nama.getText().isEmpty()){
+        if(nip.getText().isEmpty() || nama.getText().isEmpty() || tgl.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Data belum lengkap!");
             return;
         }
