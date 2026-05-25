@@ -25,12 +25,19 @@ public class SiswaForm extends JFrame {
 
         add(nis); add(nama); add(alamat); add(simpan);
 
-        simpan.addActionListener(e -> {
+        simpan.addActionListener(e -> simpan());
+                 setVisible(true);
+    }
+           void simpan(){
+              if(nis.getText().isEmpty() || nama.getText().isEmpty() || alamat.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Data belum lengkap!");
+            return;
+        }
             Siswa s = new Siswa(nis.getText(), nama.getText(), alamat.getText());
             FileUtil.write("siswa.txt", s.toString());
-            JOptionPane.showMessageDialog(this,"Tersimpan");
-        });
+            JOptionPane.showMessageDialog(this,"Data Siswa Tersimpan");
+        }
+                
 
-        setVisible(true);
+        
     }
-}
