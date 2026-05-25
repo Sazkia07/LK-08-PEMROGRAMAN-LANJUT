@@ -37,7 +37,7 @@ public class BukuForm extends JFrame {
     }
 
     void simpan(){
-        if(kode.getText().isEmpty() || judul.getText().isEmpty()){
+        if(kode.getText().isEmpty() || judul.getText().isEmpty() || jenis.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Data belum lengkap!");
             return;
         }
