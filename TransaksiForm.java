@@ -38,8 +38,58 @@ public class TransaksiForm extends JFrame {
         }
         return c;
     }
+    boolean bukuDipinjam(String buku){
+
+    for(String s : FileUtil.read("transaksi.txt")){
+
+        String[] d = s.split(";");
+
+        if(d[2].equalsIgnoreCase(buku)
+                && d[5].equals("0")){
+
+            return true;
+        }
+    }
+
+    return false;
+}
+    boolean bukuAda(String buku){
+
+    for(String s : FileUtil.read("buku.txt")){
+
+        String[] d = s.split(";");
+
+        if(d[1].equalsIgnoreCase(buku)){
+            return true;
+        }
+    }
+
+    return false;
+}
 
     void proses(){
+        if(!bukuAda(buku.getText())){
+
+    JOptionPane.showMessageDialog(
+        this,
+        "Buku tidak tersedia!"
+    );
+
+    return;
+}
+        if(bukuDipinjam(buku.getText())){
+
+    JOptionPane.showMessageDialog(
+        this,
+        "Buku sedang dipinjam!"
+    );
+
+    return;
+}
+        if(kode.getText().isEmpty() || nis.getText().isEmpty() || buku.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Data belum lengkap!");
+            return;
+        }
         if(hitung(nis.getText())>=2){
             JOptionPane.showMessageDialog(this,"Max 2 buku!");
             return;
